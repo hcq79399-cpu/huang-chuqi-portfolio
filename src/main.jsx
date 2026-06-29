@@ -399,7 +399,7 @@ function App() {
 
             <div className="section-heading">
               <p>EXPERIENCE</p>
-              <h2>从内容现场长出来的增长经验</h2>
+              <h2>在内容中沉淀增长方法</h2>
             </div>
             <div className="timeline">
               {timeline.map((item) => (
