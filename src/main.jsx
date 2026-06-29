@@ -8,6 +8,8 @@ import './styles.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const asset = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`;
+
 const parts = [
   {
     key: 'about',
@@ -339,14 +341,14 @@ function App() {
                     <h1>{item.title}</h1>
                     <span>{item.copy}</span>
                   </div>
-                  <img src={item.image} alt={item.title} />
+                  <img src={asset(item.image)} alt={item.title} />
                 </button>
               )})}
             </div>
           </div>
 
           <div className="reflection" aria-hidden="true">
-            <img src={part.image} alt="" />
+            <img src={asset(part.image)} alt="" />
             <div className="water-lines" />
           </div>
           <div className="part-switch" aria-label="Portfolio category">
@@ -387,9 +389,9 @@ function App() {
               </div>
               <div className="profile-photo">
                 <img
-                  src="/assets/about-portrait.jpg"
+                  src={asset('/assets/about-portrait.jpg')}
                   alt="黄楚齐"
-                  onError={(e) => { e.currentTarget.src = '/assets/about-cover.jpg'; }}
+                  onError={(e) => { e.currentTarget.src = asset('/assets/about-cover.jpg'); }}
                 />
                 <div className="profile-photo-frame" aria-hidden="true" />
               </div>
@@ -478,7 +480,7 @@ function App() {
                 >
                   <span>{item.label}</span>
                   <b>{item.title}</b>
-                  <img src={item.image} alt={item.title} />
+                  <img src={asset(item.image)} alt={item.title} />
                 </button>
               ))}
             </div>
@@ -593,7 +595,7 @@ function ContentFrame({ children, showContact = true }) {
             <div className="contact-actions">
               <a href="tel:+8619892400358"><Phone size={18} />19892400358</a>
               <a href="mailto:2543257036@qq.com"><Mail size={18} />2543257036@qq.com</a>
-              <a href="/docs/resume.pdf" target="_blank" rel="noreferrer"><ExternalLink size={18} />My resume</a>
+              <a href={asset('/docs/resume.pdf')} target="_blank" rel="noreferrer"><ExternalLink size={18} />My resume</a>
             </div>
           </section>
         )}
@@ -622,7 +624,7 @@ function WorkDetail({ activeWork }) {
               { title: '分享一个超级实用的记账app…', href: 'https://v.douyin.com/erjLFjB5fIk/', cover: '/assets/pages/operation-card-03.jpg' }
             ].map((card) => (
               <a href={card.href} target="_blank" rel="noreferrer" key={card.title}>
-                <img src={card.cover} alt={card.title} />
+                <img src={asset(card.cover)} alt={card.title} />
                 <b>{card.title}</b>
               </a>
             ))}
@@ -644,7 +646,7 @@ function WorkDetail({ activeWork }) {
                 rel="noreferrer"
                 key={card.title}
               >
-                <img src={card.cover} alt={card.title} />
+                <img src={asset(card.cover)} alt={card.title} />
                 <b>{card.title}</b>
               </a>
             ))}
@@ -663,7 +665,7 @@ function WorkDetail({ activeWork }) {
                 onClick={(e) => e.preventDefault()}
                 key={card.title}
               >
-                <img src={card.cover} alt={card.title} />
+                <img src={asset(card.cover)} alt={card.title} />
                 <b>{card.title}</b>
               </a>
             ))}
@@ -707,7 +709,7 @@ function WorkDetail({ activeWork }) {
         <p>{item.description}</p>
       </header>
       <div className="feature-card">
-        <img src={item.image} alt={item.title} />
+        <img src={asset(item.image)} alt={item.title} />
         <div>
           {item.cards.map((card) => <span key={card}>{card}</span>)}
           <a href={item.href} target="_blank" rel="noreferrer">查看作品 <ArrowRight size={18} /></a>
@@ -727,7 +729,7 @@ function VideoCase({ data, href }) {
       </div>
 
       <div className="video-preview">
-        <img src={data.cover} alt="拍摄剪辑作品预览" />
+        <img src={asset(data.cover)} alt="拍摄剪辑作品预览" />
         <a className="case-cta" href={href} target="_blank" rel="noreferrer">
           {data.linkLabel}
           <ArrowRight size={18} />
@@ -757,7 +759,7 @@ function CaseStudy({ data, href }) {
       <div className="case-preview-row">
         {data.preview && (
           <a className="case-preview" href={href} target="_blank" rel="noreferrer" aria-label="查看百岁山营销策划案">
-            <img src={data.preview} alt={`${data.name}预览图`} />
+            <img src={asset(data.preview)} alt={`${data.name}预览图`} />
           </a>
         )}
 
